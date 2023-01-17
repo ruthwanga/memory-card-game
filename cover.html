@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Memory Game</title>
+    </head>
+    <body>
+        <div class="om_wrap">
+            <header>
+            <img src="img/Jack_Daniels_Logo.svg.png" alt="" max width="20%" srcset=""></header>
+            <h2>JACK'S BIRTHDATE HAS ALWAYS BEEN A MYSTERY. HOPEFULLY YOURS ISN'T.</h2>
+
+        </div>
+
+     <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Verify Your Age</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="age-form">
+                     <form action="" onsubmit="ageTest()">
+                        <p>Enter Your Date of Birth:</p>
+                        <input type="date" id="dob" value="">
+                        <p class="checkbox">
+                            <input type="checkbox" id="checked">
+                            The information is true and punishable by law if false.
+                        </p>
+                        <input type="submit" value="Submit" class="submit">
+                    </form>
+                    <p class="denied"><span id="output"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="cover.js"></script>
+</body>
+
+<style>
+body {
+    background: #ddd;
+    background-color:black;
+}
+html div#om-{{id}} .om_wrap{
+    color: whitesmoke;
+    font-family: monospace;
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    overflow: hidden;
+}
+html div#om-{{id}} .om_wrap h2{
+    font-size: 20px !important;
+    font-weight: bold !important;
+    margin-bottom: 30px !important;
+}
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin-top:5px;
+}
+
+.age-form {
+    width: 600px;
+    height: 120px;
+    margin: 20px auto;
+    padding: 10px;
+    background:gray;
+    border: 3px solid #333;
+    border-radius: 10px; 
+}
+
+form {
+    padding: 20px;
+}
+
+.submit {
+    background: olive;
+    border-radius: 10px;
+    color: whitesmoke;
+
+}
+
+.denied {
+    font-size: 42px;
+    color: red;
+    text-align: center;
+    animation: blinker 1.75s linear infinite;
+}
+
+.granted {
+    font-size: 42px;
+    color: yellow;
+    text-align: center;
+    animation: blinker 1.75s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
