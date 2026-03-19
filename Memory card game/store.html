@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jack Daniels Store</title>
+  <link rel="stylesheet" href="store.css" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background-color: #222;
+      padding: 15px;
+      border-radius: 10px;
+      width: 220px;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .purchase-btn {
+      padding: 10px;
+      background-color: #1C7CCC;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    #game-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #popup-content {
+      background-color: #060AB2;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #popup-content a, #popup-content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #F7931E;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    #popup-content button {
+      background-color: #333;
+    }
+
+    /* Confirmation message style */
+    #confirmation-message {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #F7931E;
+      font-size: 20px;
+      font-weight: bold;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 9998;
+    }
+
+    /* Thank you message style */
+    #thank-you-message {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 20px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 30px;
+      border-radius: 10px;
+      z-index: 9999;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="img/Jack_Daniels_Logo.svg.png" alt="Jack Daniels Logo" class="logo" style="max-width: 200px;">
+    <h1>Shop Jack Daniel's Collection</h1>
+  </header>
+
+  <main>
+    <section class="products">
+
+      <div class="product-card">
+        <img src="img/HONEY JD.jpg" alt="Honey">
+        <h2>HONEY</h2>
+        <p>Ksh.4500</p>
+        <button class="purchase-btn" onclick="purchase('Honey')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/GENTLEMAN JD.jpg" alt="Gentleman">
+        <h2>GENTLEMAN</h2>
+        <p>Ksh.8450</p>
+        <button class="purchase-btn" onclick="purchase('Gentleman')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/jack-daniels-gold-no27.webp" alt="Gold">
+        <h2>Gold</h2>
+        <p>Ksh.7000</p>
+        <button class="purchase-btn" onclick="purchase('Gold')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/Buy_Jack_Daniels_Tennessee_Apple_Online.jpg" alt="Apple">
+        <h2>Apple</h2>
+        <p>Ksh.8500</p>
+        <button class="purchase-btn" onclick="purchase('Apple')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/jack-daniels-old-no-7.jpg" alt="Old no.7">
+        <h2>Old no.7</h2>
+        <p>Ksh.3800</p>
+        <button class="purchase-btn" onclick="purchase('Old no.7')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/jack-daniels-rye-whiskey.webp" alt="Rye">
+        <h2>Rye</h2>
+        <p>Ksh.5400</p>
+        <button class="purchase-btn" onclick="purchase('Rye')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/SINGLE BARREL.jpg" alt="Single Barrel">
+        <h2>Single Barrel</h2>
+        <p>Ksh.8500</p>
+        <button class="purchase-btn" onclick="purchase('Single Barrel')">Purchase</button>
+      </div>
+
+      <div class="product-card">
+        <img src="img/jack-daniel-s-fire-whiskey-750ml-country-wine-and-spirits.jpg" alt="Fire">
+        <h2>Fire</h2>
+        <p>Ksh.4000</p>
+        <button class="purchase-btn" onclick="purchase('Fire')">Purchase</button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Confirmation Message -->
+  <div id="confirmation-message"></div>
+
+  <!-- Thank You Message -->
+  <div id="thank-you-message">
+    <h2>🎉 Thank You!</h2>
+    <p>You've successfully made your order. Now, enjoy the Jack Daniel's Memory Game!</p>
+    <a href="cover.html">🎮 Play the Game</a>
+  </div>
+
+  <!-- Game Prompt Popup -->
+  <div id="game-popup">
+    <div id="popup-content">
+      <h2>🎉 Thank You!</h2>
+      <p id="popup-message"></p>
+      <p><input type="text" id="buyer-name" placeholder="Enter your name" style="padding:8px; width: 80%; border-radius: 8px; border: none;"/></p>
+      <button onclick="submitOrder()">Submit</button>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+  let selectedItem = "";
+
+  function purchase(item) {
+    selectedItem = item;
+
+    const message = `You selected: ${item}. Please enter your name and click Submit.`;
+    document.getElementById('popup-message').innerText = message;
+    document.getElementById('buyer-name').value = ""; // clear previous input
+    document.getElementById('game-popup').style.display = 'flex';
+  }
+
+  function submitOrder() {
+    const name = document.getElementById('buyer-name').value.trim();
+
+    if (!name) {
+      showConfirmation("❌ Please input name.", "red");
+      return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbzSJr7V5JfioeMHrsN2he6ZAFzRN3tai7L_sMn92w0SzUjPnvs71lJ8q1CjxHWGwig/exec", {
+      method: "POST",
+      mode: "no-cors", // Prevents CORS issues
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name: name, item: selectedItem })
+    })
+    .then(() => {
+      showConfirmation("✅ Order recorded. Thank you!", "#4CAF50");  // Green for success
+      closePopup();
+      setTimeout(showThankYouMessage, 2000);  // Show Thank You message after a slight delay
+    })
+    .catch(error => {
+      console.error("❌ Failed to record order:", error);
+      showConfirmation("❌ Something went wrong. Please try again.", "red");
+    });
+  }
+
+  // Function to display the confirmation message in the center
+  function showConfirmation(message, color) {
+    const confirmationElement = document.getElementById('confirmation-message');
+    confirmationElement.innerText = message;
+    confirmationElement.style.color = color;
+    confirmationElement.style.display = 'block';  // Make the confirmation visible
+    setTimeout(() => {
+      confirmationElement.style.display = 'none'; // Hide confirmation message after 3 seconds
+    }, 3000);
+  }
+
+  // Function to display the Thank You message
+  function showThankYouMessage() {
+    document.getElementById('thank-you-message').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('thank-you-message').style.display = 'none';
+    }, 5000);  // Hide the thank you message after 5 seconds
+  }
+
+  function closePopup() {
+    document.getElementById('game-popup').style.display = 'none';
+  }
+  </script>
+</body>
+</html>
